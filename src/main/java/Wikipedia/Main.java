@@ -2,17 +2,21 @@ package Wikipedia;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        if (args.length == 0) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter article name: ");
+        String articleTitle = scanner.nextLine().trim();
+
+        if (articleTitle.isEmpty()) {
             System.err.println("Error: No article name provided.");
             return;
         }
 
-        String articleTitle = String.join(" ", args);
         WikipediaClient client = new WikipediaClient();
         RevisionParser parser = new RevisionParser();
         RevisionFormatter formatter = new RevisionFormatter();
@@ -26,10 +30,10 @@ public class Main {
             }
 
             List<Revision> revisions = result.getRevisions();
-            int counter = 1;
-            for (Revision revision : revisions) {
-                System.out.println(formatter.format(revision, counter));
-                counter++;
+            int limit = Math.min(15, revisions.size());
+
+            for (int i = 0; i < limit; i++) {
+                System.out.println(formatter.format(revisions.get(i), i + 1));
             }
 
         } catch (PageNotFoundException e) {
@@ -39,4 +43,3 @@ public class Main {
         }
     }
 }
-
