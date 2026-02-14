@@ -16,4 +16,13 @@ Program Function:
 4. The revision number, timestamp, and usersname are displayed (RevisonFormatter.java)
 5. Shows the relevant error messages for network problems (Main.java)
 
+----------------------------------
+Build Requirements:
+- Gradle
+
+Run instructions:
+
+- Click "run" to initiate the program
+- Input article title(Zappa, Frank Zappa, etc.) into command line
+----------------------------------
 
