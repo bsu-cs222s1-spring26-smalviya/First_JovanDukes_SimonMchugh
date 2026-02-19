@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db1cf745-201d-437f-9da1-d68a233d8bef" name="Changes" comment="Added title label, instruction label, and restructured topBar node.">
+    <list default="true" id="db1cf745-201d-437f-9da1-d68a233d8bef" name="Changes" comment="Formatting panes added">
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,7 +12,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Wikipedia/RevisionFormatter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Wikipedia/RevisionFormatter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Wikipedia/RevisionFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Wikipedia/RevisionFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Wikipedia/WikiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Wikipedia/WikiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771464119984</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Formatting panes added">
+      <option name="closed" value="true" />
+      <created>1771466942233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1771466942233</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -201,6 +211,7 @@
     <MESSAGE value="Refactored WikiUI.java.java to WikiUI.java. Changed path to UI in build.gradle.kts from &quot;bsu.edu.cs.UI&quot; to &quot;Wikipedia.WikiUI&quot;" />
     <MESSAGE value="Put UI Element construction and stage construction in separate methods in order to follow the teachings in Clean Code." />
     <MESSAGE value="Added title label, instruction label, and restructured topBar node." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added title label, instruction label, and restructured topBar node." />
+    <MESSAGE value="Formatting panes added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatting panes added" />
   </component>
 </project>

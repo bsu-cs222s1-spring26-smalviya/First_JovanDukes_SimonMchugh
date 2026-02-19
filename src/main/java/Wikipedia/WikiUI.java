@@ -78,7 +78,7 @@ public class WikiUI extends Application {
 
     private void constructStage(Stage stage) {
         HBox inputBar = new HBox(10, articleField, searchButton);
-        VBox topBarMain = new VBox(10, titleText, instructionText, inputBar);
+        VBox topBarMain = new VBox(4, titleText, instructionText, inputBar);
         HBox topBar = new HBox(10, topFillerPane, topBarMain);
         inputBar.setPadding(new Insets(10));
 
@@ -155,9 +155,8 @@ public class WikiUI extends Application {
 
         int limit = Math.min(15, revisions.size());
         for (int i = 0; i < limit; i++) {
-            resultsList.getItems().add(
-                    formatter.format(revisions.get(i), i + 1)
-            );
+            String formattedString = formatter.format(revisions.get(i), i + 1);
+            resultsList.getItems().add(formattedString);
         }
     }
 
@@ -174,6 +173,7 @@ public class WikiUI extends Application {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     public static void main(String[] args) {
         launch(args);
     }
