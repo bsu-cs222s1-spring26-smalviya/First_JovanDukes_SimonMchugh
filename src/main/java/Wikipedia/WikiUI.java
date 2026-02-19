@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -21,6 +23,7 @@ public class WikiUI extends Application {
     private final RevisionParser parser = new RevisionParser();
     private final RevisionFormatter formatter = new RevisionFormatter();
 
+    private Label titleText;
     private Label instructionText;
     private TextField articleField;
     private Button searchButton;
@@ -38,6 +41,18 @@ public class WikiUI extends Application {
     }
 
     private void constructUIElements() {
+        titleText = new Label();
+        titleText.setText("Wikipedia Revision Tracker");
+        titleText.setFont(new Font(24.0));
+
+        instructionText = new Label();
+        instructionText.setText(
+                "Enter an article name, and press" +
+                " \"submit\" to search for the " +
+                "article's most recent changes."
+        );
+        instructionText.setFont(new Font(14.0));
+
         articleField = new TextField();
         articleField.setPromptText("Article name here...");
 
@@ -50,9 +65,9 @@ public class WikiUI extends Application {
     }
 
     private void constructStage(Stage stage) {
-        HBox instructionTextBar = new HBox(10, instructionText);
-        HBox topBar = new HBox(10, articleField, searchButton);
-        topBar.setPadding(new Insets(10));
+        HBox inputBar = new HBox(10, articleField, searchButton);
+        VBox topBar = new VBox(6, titleText, instructionText, inputBar);
+        inputBar.setPadding(new Insets(10));
 
         BorderPane root = new BorderPane();
         root.setTop(topBar);
