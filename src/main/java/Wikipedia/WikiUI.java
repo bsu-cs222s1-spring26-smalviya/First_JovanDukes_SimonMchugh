@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -23,12 +24,15 @@ public class WikiUI extends Application {
     private final RevisionParser parser = new RevisionParser();
     private final RevisionFormatter formatter = new RevisionFormatter();
 
+    private Pane topFillerPane;
     private Label titleText;
     private Label instructionText;
     private TextField articleField;
     private Button searchButton;
     private ListView<String> resultsList;
     private Label redirectLabel;
+    private Pane leftFillerPane;
+    private Pane rightFillerPane;
 
     @Override
     public void start(Stage stage) {
@@ -41,6 +45,9 @@ public class WikiUI extends Application {
     }
 
     private void constructUIElements() {
+        topFillerPane = new Pane();
+        topFillerPane.setMinWidth(10);
+
         titleText = new Label();
         titleText.setText("Wikipedia Revision Tracker");
         titleText.setFont(new Font(24.0));
@@ -61,18 +68,26 @@ public class WikiUI extends Application {
 
         resultsList = new ListView<>();
         redirectLabel = new Label();
-        redirectLabel.setStyle("-fx-text-fill: darkblue;");
+        redirectLabel.setStyle("-fx-text-fill: blue;");
+
+        leftFillerPane = new Pane();
+        leftFillerPane.setMinWidth(10);
+        rightFillerPane = new Pane();
+        rightFillerPane.setMinWidth(10);
     }
 
     private void constructStage(Stage stage) {
         HBox inputBar = new HBox(10, articleField, searchButton);
-        VBox topBar = new VBox(6, titleText, instructionText, inputBar);
+        VBox topBarMain = new VBox(10, titleText, instructionText, inputBar);
+        HBox topBar = new HBox(10, topFillerPane, topBarMain);
         inputBar.setPadding(new Insets(10));
 
         BorderPane root = new BorderPane();
         root.setTop(topBar);
         root.setCenter(resultsList);
         root.setBottom(redirectLabel);
+        root.setLeft(leftFillerPane);
+        root.setRight(rightFillerPane);
         BorderPane.setMargin(redirectLabel, new Insets(10));
 
         stage.setScene(new Scene(root, 600, 400));
@@ -125,7 +140,7 @@ public class WikiUI extends Application {
 
     private void updateUI(ParsedResult result) {
         if (result.isRedirect()) {
-            redirectLabel.setText("Redirected to: " +
+            redirectLabel.setText("[ ! ] Redirected to: " +
                     result.getRedirectTarget());
         }
 
