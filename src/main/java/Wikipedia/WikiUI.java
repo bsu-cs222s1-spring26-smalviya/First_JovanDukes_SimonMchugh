@@ -21,6 +21,7 @@ public class WikiUI extends Application {
     private final RevisionParser parser = new RevisionParser();
     private final RevisionFormatter formatter = new RevisionFormatter();
 
+    private Label instructionText;
     private TextField articleField;
     private Button searchButton;
     private ListView<String> resultsList;
@@ -30,8 +31,15 @@ public class WikiUI extends Application {
     public void start(Stage stage) {
         stage.setTitle("Wikipedia Revision Tracker");
 
+        constructUIElements();
+        constructStage(stage);
+
+        stage.show();
+    }
+
+    private void constructUIElements() {
         articleField = new TextField();
-        articleField.setPromptText("Enter Wikipedia article name");
+        articleField.setPromptText("Article name here...");
 
         searchButton = new Button("Search");
         searchButton.setOnAction(e -> handleSearch());
@@ -39,7 +47,10 @@ public class WikiUI extends Application {
         resultsList = new ListView<>();
         redirectLabel = new Label();
         redirectLabel.setStyle("-fx-text-fill: darkblue;");
+    }
 
+    private void constructStage(Stage stage) {
+        HBox instructionTextBar = new HBox(10, instructionText);
         HBox topBar = new HBox(10, articleField, searchButton);
         topBar.setPadding(new Insets(10));
 
@@ -50,7 +61,6 @@ public class WikiUI extends Application {
         BorderPane.setMargin(redirectLabel, new Insets(10));
 
         stage.setScene(new Scene(root, 600, 400));
-        stage.show();
     }
 
     private void handleSearch() {
