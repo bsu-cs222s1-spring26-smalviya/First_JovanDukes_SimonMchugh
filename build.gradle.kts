@@ -34,6 +34,6 @@ javafx {
 }
 
 application {
-    mainClass.set("edu.bsu.cs.UI")
+    mainClass.set("Wikipedia.WikiUI")
     // mainModule.set("edu.bsu.cs") // <- uncomment if you have a module-info.java named 'module edu.bsu.cs { ... }'
 }
