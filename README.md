@@ -25,4 +25,22 @@ Run instructions:
 - Click "run" to initiate the program
 - Input article title(Zappa, Frank Zappa, etc.) into command line
 ----------------------------------
+Entry Point # 1 : Graphical User Interface(GUI)
+----------------------------------
+Entry point: Wikipedia.WikiUI
 
+Description: Launches a windowed interface where you can enter a Wikipedia article name and view its most recent revisions.
+
+Run instructions: Run with gradle(Gradle>Task>Application>Run)
+Enter Wikipedia article name(Frank Zappa)
+For test Classes: Gradle>Task>Verification>Test
+
+----------------------------------
+Entry Point # 2 : Console Application
+----------------------------------
+Entry point: Wikipedia.main
+
+Description: Launches a text-based console application. Users can type an article name, and the program prints the 15 most recent revisions in the terminal.
+
+Run instructions: Go to main.java and select Run Main.main()
+Enter Wikipedia article name(Frank Zappa)
