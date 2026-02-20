@@ -18,7 +18,10 @@ Program Function:
 
 ----------------------------------
 Build Requirements:
+
+- Java
 - Gradle
+- JavaFX
 
 Run instructions:
 
