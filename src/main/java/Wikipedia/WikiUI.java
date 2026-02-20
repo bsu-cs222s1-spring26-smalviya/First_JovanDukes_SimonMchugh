@@ -138,7 +138,7 @@ public class WikiUI extends Application {
         new Thread(task).start();
     }
 
-    private void updateUI(ParsedResult result) {
+    void updateUI(ParsedResult result) {
         if (result.isRedirect()) {
             redirectLabel.setText("[ ! ] Redirected to: " +
                     result.getRedirectTarget());
@@ -173,6 +173,11 @@ public class WikiUI extends Application {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    ListView<String> getResultsList() {
+        return resultsList;
+    }
+
 
     public static void main(String[] args) {
         launch(args);
