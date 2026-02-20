@@ -3,10 +3,12 @@ package Wikipedia;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RevisionParserTest {
-    @Test
-    void testSimpleParse() throws Exception {
+class RevisionParserTest {
 
+    private final RevisionParser parser = new RevisionParser();
+
+    @Test
+    void parse_ShouldParseValidJson() throws Exception {
         String json = """
         {
           "query": {
@@ -14,8 +16,12 @@ public class RevisionParserTest {
               "123": {
                 "revisions": [
                   {
-                    "user": "TestUser",
-                    "timestamp": "2024-01-01T00:00:00Z"
+                    "user": "Simon",
+                    "timestamp": "2025-02-19T10:00:00Z"
+                  },
+                  {
+                    "user": "Jovan",
+                    "timestamp": "2025-02-18T09:00:00Z"
                   }
                 ]
               }
@@ -24,9 +30,51 @@ public class RevisionParserTest {
         }
         """;
 
-        RevisionParser parser = new RevisionParser();
         ParsedResult result = parser.parse(json);
-        assertEquals(1, result.getRevisions().size());
-        assertEquals("TestUser", result.getRevisions().get(0).getUser());
+
+        assertFalse(result.isRedirect());
+        assertEquals(2, result.getRevisions().size());
+        assertEquals("Simon", result.getRevisions().get(0).getUser());
+    }
+
+    @Test
+    void parse_ShouldDetectRedirect() throws Exception {
+        String json = """
+        {
+          "query": {
+            "redirects": [
+              { "to": "NewTitle" }
+            ],
+            "pages": {
+              "123": {
+                "revisions": []
+              }
+            }
+          }
+        }
+        """;
+
+        ParsedResult result = parser.parse(json);
+
+        assertTrue(result.isRedirect());
+        assertEquals("NewTitle", result.getRedirectTarget());
+    }
+
+    @Test
+    void parse_ShouldThrowPageNotFoundException() {
+        String json = """
+        {
+          "query": {
+            "pages": {
+              "123": {
+                "missing": ""
+              }
+            }
+          }
+        }
+        """;
+
+        assertThrows(PageNotFoundException.class,
+                () -> parser.parse(json));
     }
 }
